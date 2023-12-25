@@ -1,3 +1,3 @@
 export default function Home() {
-  <h1 className="flex font-bold">Hello World</h1>;
+  return <h1 className="bg-bran font-poppins flex">Hello World</h1>;
 }
