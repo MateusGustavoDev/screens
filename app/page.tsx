@@ -1,11 +1,14 @@
-import LiveShowCard from "./components/LiveShowCard";
-import Banner from "./components/Banner";
-import CategorySection from "./components/CategorySection";
-import MovieCard from "./components/MovieCard";
+"use client";
+import LiveShowCard from "@/components/ui/LiveShowCard";
+import Banner from "@/components/ui/Banner";
+import CategorySection from "@/components/ui/CategorySection";
+import MovieCard from "@/components/ui/MovieCard";
+import Header from "@/components/ui/Header";
 
 export default function Home() {
   return (
     <>
+      <Header />
       <Banner />
       <CategorySection text="Live Show">
         <LiveShowCard />
