@@ -5,10 +5,7 @@ interface MovieCardProps {
   movieImage: string;
 }
 
-export default function VerticalCard({
-  horizontal,
-  movieImage,
-}: MovieCardProps) {
+export default function MovieCard({ horizontal, movieImage }: MovieCardProps) {
   return (
     <div
       className={`relative ${

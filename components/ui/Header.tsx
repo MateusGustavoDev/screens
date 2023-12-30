@@ -1,13 +1,18 @@
+"use client";
 import Logo from "./Logo";
 import Link from "next/link";
 import { Clapperboard, Drama, Film, Home, Tv, Youtube } from "lucide-react";
 import Button from "./Button";
 import SearchInput from "./SearchInput";
+import { signIn, useSession } from "next-auth/react";
+import LoggedInUser from "./LoggedInUser";
 
 export default function Header() {
+  const { data: session } = useSession();
+
   return (
     <div className="absolute z-50 w-full">
-      <div className="m-auto flex h-[68px] w-full max-w-[1780px] items-center">
+      <div className="m-auto flex h-24 w-full max-w-[1780px] items-center">
         <Logo />
         <div className="flex w-full items-center justify-between">
           <div className="ml-16 flex gap-6">
@@ -56,7 +61,11 @@ export default function Header() {
           </div>
           <div className="flex items-center gap-12">
             <SearchInput />
-            <Button text="sign in" />
+            {session ? (
+              <LoggedInUser />
+            ) : (
+              <Button onClick={() => signIn()} text="sign in" />
+            )}
           </div>
         </div>
       </div>
