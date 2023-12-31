@@ -3,13 +3,15 @@ import LiveShowCard from "@/components/ui/LiveShowCard";
 import Banner from "@/components/ui/Banner";
 import CategorySection from "@/components/ui/CategorySection";
 import MovieCard from "@/components/ui/MovieCard";
-import Header from "@/components/ui/Header";
+import MoviesCarousel from "@/components/ui/MoviesCarousel";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
+  const { data: session } = useSession();
+
   return (
     <>
-      <Header />
-      <Banner />
+      {session ? <MoviesCarousel /> : <Banner />}
       <CategorySection text="Live Show">
         <LiveShowCard />
         <LiveShowCard />

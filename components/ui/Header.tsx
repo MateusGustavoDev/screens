@@ -2,7 +2,7 @@
 import Logo from "./Logo";
 import Link from "next/link";
 import { Clapperboard, Drama, Film, Home, Tv, Youtube } from "lucide-react";
-import Button from "./Button";
+import Button from "./ButtonRed";
 import SearchInput from "./SearchInput";
 import { signIn, useSession } from "next-auth/react";
 import LoggedInUser from "./LoggedInUser";
@@ -11,7 +11,7 @@ export default function Header() {
   const { data: session } = useSession();
 
   return (
-    <div className="absolute z-50 w-full">
+    <div className="sticky  z-50 w-full">
       <div className="m-auto flex h-24 w-full max-w-[1780px] items-center">
         <Logo />
         <div className="flex w-full items-center justify-between">
