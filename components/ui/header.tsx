@@ -1,11 +1,11 @@
 "use client";
-import Logo from "./Logo";
+import Logo from "./logo";
 import Link from "next/link";
 import { Clapperboard, Drama, Film, Home, Tv, Youtube } from "lucide-react";
-import Button from "./ButtonRed";
-import SearchInput from "./SearchInput";
+import SearchInput from "./search-input";
 import { signIn, useSession } from "next-auth/react";
-import LoggedInUser from "./LoggedInUser";
+import LoggedInUser from "./logged-in-user";
+import ActionButton from "./action-button";
 
 export default function Header() {
   const { data: session } = useSession();
@@ -64,7 +64,7 @@ export default function Header() {
             {session ? (
               <LoggedInUser />
             ) : (
-              <Button onClick={() => signIn()} text="sign in" />
+              <ActionButton onClick={() => signIn()} text="sign in" />
             )}
           </div>
         </div>

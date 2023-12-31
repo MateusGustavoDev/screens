@@ -1,9 +1,9 @@
 "use client";
-import LiveShowCard from "@/components/ui/LiveShowCard";
-import Banner from "@/components/ui/Banner";
-import CategorySection from "@/components/ui/CategorySection";
-import MovieCard from "@/components/ui/MovieCard";
-import MoviesCarousel from "@/components/ui/MoviesCarousel";
+import LiveShowCard from "@/components/ui/live-show-card";
+import Banner from "@/components/ui/banner";
+import CategorySection from "@/components/ui/category-section";
+import MovieCard from "@/components/ui/movie-card";
+import MovieCarousel from "@/components/ui/movie-carousel";
 import { useSession } from "next-auth/react";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <>
-      {session ? <MoviesCarousel /> : <Banner />}
+      {session ? <MovieCarousel /> : <Banner />}
       <CategorySection text="Live Show">
         <LiveShowCard />
         <LiveShowCard />

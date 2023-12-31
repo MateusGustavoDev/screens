@@ -7,10 +7,10 @@ import {
   CarouselPrevious,
 } from "./carousel";
 import movieBanner from "@/public/movie-banner.jpeg";
-import PlayNowButton from "./PlayNowButton";
-import WatchListButton from "./WatchListButton";
+import PlayNowButton from "./play-now-button";
+import WatchListButton from "./watch-list-button";
 
-export default function MoviesCarousel() {
+export default function MovieCarousel() {
   return (
     <Carousel className="m-auto max-w-[1700px] px-4">
       <CarouselContent>

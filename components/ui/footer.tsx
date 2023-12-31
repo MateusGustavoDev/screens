@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Logo from "./Logo";
+import Logo from "./logo";
 import facebook from "@/public/facebook.svg";
 import instagram from "@/public/instagram.svg";
 import Image from "next/image";
