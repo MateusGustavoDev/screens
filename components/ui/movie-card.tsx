@@ -1,26 +1,24 @@
-import Image from "next/image";
-
 interface MovieCardProps {
   horizontal?: boolean;
   movieImage: string;
+  name: string;
 }
 
-export default function MovieCard({ horizontal, movieImage }: MovieCardProps) {
+export function MovieCard({ horizontal, movieImage, name }: MovieCardProps) {
   return (
     <div
-      className={`relative ${
-        horizontal ? "h-[240px] w-[400px]" : "h-[290px] w-[214px]"
-      } rounded bg-slate-500`}
+      className={`group relative  ${
+        horizontal
+          ? "h-[240px] w-[400px] bg-top"
+          : "h-[290px] w-[214px] bg-center "
+      } shrink-0 rounded bg-slate-500 bg-cover`}
+      style={{ backgroundImage: `url(${movieImage})` }}
     >
-      {horizontal ? (
-        <Image src={movieImage} width={400} height={240} alt="Movie name" />
-      ) : (
-        <Image src={movieImage} width={214} height={290} alt="Movie name" />
-      )}
-
-      <span className="absolute bottom-3 left-3 z-50 font-poppins text-xl font-semibold text-white">
-        Wanda Vision
-      </span>
+      <div className="hidden h-full w-full bg-gradient-to-t from-black/90 to-black/10 group-hover:block ">
+        <span className="absolute bottom-6 left-1/2 w-full -translate-x-1/2 text-center font-poppins text-sm font-semibold text-zinc-200">
+          {name}
+        </span>
+      </div>
     </div>
   );
 }

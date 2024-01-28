@@ -1,52 +1,90 @@
-import Image from "next/image";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "./carousel";
-import movieBanner from "@/public/movie-banner.jpeg";
-import PlayNowButton from "./play-now-button";
-import WatchListButton from "./watch-list-button";
+"use client";
+import { ReactNode, useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { CarouselButton } from "./carousel-button";
 
-export default function MovieCarousel() {
+interface MovieCarouselProps {
+  text: string;
+  children: ReactNode;
+}
+
+export function MovieCarousel({ text, children }: MovieCarouselProps) {
+  const carousel = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+  const [scrollX, setScrollX] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(false);
+
+  useEffect(() => {
+    addEventListener("resize", () => {
+      if (window.innerWidth <= 1024) {
+        setWindowWidth(true);
+      } else {
+        setWindowWidth(false);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    if (carousel.current) {
+      setWidth(carousel?.current?.scrollWidth - carousel.current?.offsetWidth);
+    }
+  }, [carousel.current]);
+
+  function scrollNext() {
+    if (carousel.current) {
+      const offsetWidth = carousel.current.offsetWidth;
+      if (scrollX < width) {
+        if (scrollX + offsetWidth < width) {
+          setScrollX(scrollX + offsetWidth);
+        }
+      }
+    }
+  }
+
+  function scrollPrevious() {
+    if (carousel.current) {
+      const offsetWidth = carousel.current.offsetWidth;
+      if (scrollX > 0) {
+        setScrollX(scrollX - offsetWidth);
+      }
+      console.log(scrollX);
+    }
+  }
+
   return (
-    <Carousel className="m-auto max-w-[1700px] px-4">
-      <CarouselContent>
-        <CarouselItem className="h-[720px] w-full bg-[url(/movie-banner.jpeg)] bg-cover bg-no-repeat ">
-          <div className="absolute z-20 h-[720px] w-full bg-black opacity-45" />
-          <div className="absolute top-1/2 z-50 ml-14 flex flex-col gap-10">
-            <div className="flex flex-col gap-2">
-              <div className="flex flex-col gap-6">
-                <span className="font-poppins text-4xl font-semibold text-white">
-                  Panther
-                </span>
-                <span className="font-poppins  text-xl text-white">
-                  Action, Drama • 2018 • 2h 35m
-                </span>
-              </div>
-              <span className="max-w-[474px] font-poppins text-sm text-[#807E81]">
-                The trailer of "Panther" a Bangla movie starring Jeet and
-                Shraddha Das in the lead role. The movie is directed by Anshuman
-                Pratyush.
-              </span>
+    <div className="m-auto flex w-full flex-col gap-10 py-12">
+      <span className="font-poppins text-3xl font-semibold text-white">
+        {text}
+      </span>
+      <div className="relative">
+        <motion.div
+          className="relative w-full overflow-hidden"
+          whileTap={{ cursor: "grabbing" }}
+          ref={carousel}
+        >
+          {windowWidth ? (
+            <motion.div
+              drag="x"
+              dragConstraints={{ right: 0, left: -width }}
+              className="w-ful flex cursor-pointer gap-4"
+            >
+              {children}
+            </motion.div>
+          ) : (
+            <div
+              className="w-ful flex cursor-pointer gap-4"
+              style={{
+                transform: ` translateX(${-scrollX}px)`,
+                transition: "transform 0.4s ease-in-out",
+              }}
+            >
+              {children}
             </div>
-            <div className="flex gap-5">
-              <PlayNowButton />
-              <WatchListButton />
-            </div>
-          </div>
-        </CarouselItem>
-        <CarouselItem className="h-[720px] w-full bg-[url(/movie-banner-2.jpeg)] bg-cover bg-no-repeat">
-          <Image src={movieBanner} alt="Movie name" fill />
-        </CarouselItem>
-        <CarouselItem className="h-[720px] w-full bg-[url(/movie-banner-3.jpg)] bg-cover bg-no-repeat">
-          <Image src={movieBanner} alt="Movie name" fill />
-        </CarouselItem>
-      </CarouselContent>
-      <CarouselPrevious className="h-[46px] w-[46px]" />
-      <CarouselNext className="h-[46px] w-[46px]" />
-    </Carousel>
+          )}
+        </motion.div>
+        <CarouselButton arrow="left" onClick={scrollPrevious} />
+        <CarouselButton arrow="right" onClick={scrollNext} />
+      </div>
+    </div>
   );
 }
