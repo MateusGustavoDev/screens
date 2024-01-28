@@ -1,6 +1,6 @@
 import { Search } from "lucide-react";
 
-export default function SearchInput() {
+export function SearchInput() {
   return (
     <button>
       <Search size={22} color="white" />

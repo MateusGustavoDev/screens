@@ -85,6 +85,9 @@ module.exports = {
       fontFamily: {
         poppins: ["var(--font-poppins)"],
       },
+      screen: {
+        "max-lg": { max: 1024 },
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

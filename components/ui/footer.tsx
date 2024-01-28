@@ -1,10 +1,10 @@
 import Link from "next/link";
-import Logo from "./logo";
 import facebook from "@/public/facebook.svg";
 import instagram from "@/public/instagram.svg";
 import Image from "next/image";
+import { Logo } from ".";
 
-export default function Footer() {
+export function Footer() {
   return (
     <div className="mt-[120px] flex min-h-[300px] flex-col items-center justify-center gap-7 border-t border-t-base-200 py-16">
       <div>

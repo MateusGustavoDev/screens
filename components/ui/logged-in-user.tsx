@@ -1,10 +1,11 @@
+"use client";
 import { signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarImage } from "./avatar";
 import Link from "next/link";
 import { History, ListPlus, LogOut, User } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 
-export default function LoggedInUser() {
+export function LoggedInUser() {
   const { data: session } = useSession();
 
   return (
@@ -18,13 +19,10 @@ export default function LoggedInUser() {
               ) : null)}
           </Avatar>
         </Dialog.Trigger>
-        <Dialog.Content>
+        <Dialog.Content className="data-[state=closed]:animate-[dialog-overlay-hide_200ms] data-[state=open]:animate-[dialog-overlay-show_200ms]">
           <div className="relative">
-            <div className="absolute right-0 mt-2 flex w-[257px] flex-col gap-6 rounded-lg  bg-[#15161C] p-6 shadow-lg">
-              <div
-                className="flex flex-col items-center
-         justify-center gap-3"
-              >
+            <div className="absolute right-0 mt-2 flex w-[257px] flex-col gap-6 rounded-lg bg-[#15161C] p-6 shadow-lg">
+              <div className="flex flex-col items-center justify-center gap-3">
                 <Avatar className="h-16 w-16">
                   {session &&
                     (session.user?.image ? (
