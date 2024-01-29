@@ -11,15 +11,18 @@ export function CarouselButton({ arrow, children, ...props }: CarouselButton) {
     <button
       className={`group absolute ${
         arrow === "right" ? "-right-7" : "-left-7"
-      } top-1/2 z-50 h-max w-max -translate-y-1/2 rounded-full border-2 border-white bg-base-400 p-4 text-white hover:border-red-400 max-lg:hidden`}
+      } top-1/2 z-50 h-max w-max -translate-y-1/2 rounded-full border-2 border-white bg-base-400 p-4 text-white hover:border-red-400 active:border-red-500 max-lg:hidden`}
       {...props}
     >
       {arrow === "left" && (
-        <ArrowLeft className=" text-white group-hover:text-red-400" size={20} />
+        <ArrowLeft
+          className=" text-white group-hover:text-red-400 group-active:text-red-500"
+          size={20}
+        />
       )}
       {arrow === "right" && (
         <ArrowRight
-          className=" text-white group-hover:text-red-400"
+          className=" text-white group-hover:text-red-400 group-active:text-red-500"
           size={20}
         />
       )}
