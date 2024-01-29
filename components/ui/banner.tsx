@@ -1,8 +1,8 @@
-export default function Banner() {
+export function Banner() {
   return (
-    <div className="m-auto h-[720px] max-w-[1920px] bg-[url('/banner.png')] bg-contain bg-center bg-no-repeat">
+    <div className="m-auto h-[720px] max-w-[1920px] bg-[url('/banner.png')] bg-cover bg-center bg-no-repeat">
       <div className="flex h-full w-full items-center bg-black opacity-85">
-        <div className="m-auto w-full max-w-[1780px]">
+        <div className="m-auto w-full max-w-[1780px] px-6">
           <div className="flex max-w-[860px] flex-col gap-6">
             <span className="font-poppins text-2xl font-semibold text-white">
               Welcome to BD Screens
