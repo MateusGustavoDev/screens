@@ -45,7 +45,7 @@ export function MovieRecommended() {
                     {releaseYear}
                   </span>
                 </div>
-                <span className="font-poppins text-sm leading-7 text-zinc-300">
+                <span className="line-clamp-4 w-[460px] font-poppins text-sm leading-7 text-zinc-300">
                   {data[0].overview}
                 </span>
               </div>

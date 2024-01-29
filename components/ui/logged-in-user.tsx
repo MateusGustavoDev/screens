@@ -12,14 +12,16 @@ export function LoggedInUser() {
     <div>
       <Dialog.Root>
         <Dialog.Trigger asChild>
-          <Avatar className="h-11 w-11">
-            {session &&
-              (session.user?.image ? (
-                <AvatarImage src={session?.user?.image} />
-              ) : null)}
-          </Avatar>
+          <div className="rounded-full bg-transparent p-2 transition duration-300 ease-in-out hover:bg-zinc-900 active:bg-zinc-800">
+            <Avatar className="h-11 w-11 cursor-pointer select-none">
+              {session &&
+                (session.user?.image ? (
+                  <AvatarImage src={session?.user?.image} />
+                ) : null)}
+            </Avatar>
+          </div>
         </Dialog.Trigger>
-        <Dialog.Content className="data-[state=closed]:animate-[dialog-overlay-hide_200ms] data-[state=open]:animate-[dialog-overlay-show_200ms]">
+        <Dialog.Content className="select-none data-[state=open]:animate-[dialog-overlay-show_300ms]">
           <div className="relative">
             <div className="absolute right-0 mt-2 flex w-[257px] flex-col gap-6 rounded-lg bg-[#15161C] p-6 shadow-lg">
               <div className="flex flex-col items-center justify-center gap-3">
@@ -29,6 +31,7 @@ export function LoggedInUser() {
                       <AvatarImage src={session?.user?.image} />
                     ) : null)}
                 </Avatar>
+
                 <span className="text-white opacity-35">
                   {session?.user?.name}
                 </span>
