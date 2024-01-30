@@ -8,7 +8,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export function ActionButton({ size, text, ...rest }: ButtonProps) {
   return (
     <button
-      className="rounded bg-brand-red px-6 py-2 font-poppins font-semibold text-white hover:bg-red-900"
+      className="rounded bg-brand-red px-6 py-2 font-poppins font-semibold text-white hover:bg-brand-red/70 max-sm:px-4 max-sm:text-sm"
       {...rest}
     >
       {text}

@@ -1,6 +1,7 @@
 import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
-export function MovieRecommendedSkeleton() {
+export function RecommendedMoviesSkeleton() {
   return (
     <div className="w-full">
       <div className="aspect-[1600/800] ">

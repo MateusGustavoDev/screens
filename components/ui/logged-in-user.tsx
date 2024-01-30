@@ -12,7 +12,7 @@ export function LoggedInUser() {
     <div>
       <Dialog.Root>
         <Dialog.Trigger asChild>
-          <div className="rounded-full bg-transparent p-2 transition duration-300 ease-in-out hover:bg-zinc-900 active:bg-zinc-800">
+          <div classNrounded-lge="rounded-full rounded-md bg-transparent p-2 transition duration-300 ease-in-out hover:bg-zinc-800 active:bg-zinc-700">
             <Avatar className="h-11 w-11 cursor-pointer select-none">
               {session &&
                 (session.user?.image ? (
@@ -41,7 +41,7 @@ export function LoggedInUser() {
                 <div className="w-full border border-zinc-800" />
                 <Link
                   href="#"
-                  className="flex items-center gap-4 font-poppins text-white"
+                  className="flex items-center gap-4 rounded-lg bg-transparent p-2 font-poppins  text-white transition duration-300 ease-in-out hover:bg-zinc-800 active:bg-zinc-700"
                 >
                   <User color="white" />
                   Profile
@@ -49,7 +49,7 @@ export function LoggedInUser() {
                 <div className="w-full border border-zinc-800" />
                 <Link
                   href="#"
-                  className="flex items-center gap-4 font-poppins text-white"
+                  className="flex items-center gap-4 rounded-lg bg-transparent p-2 font-poppins  text-white transition duration-300 ease-in-out hover:bg-zinc-800 active:bg-zinc-700"
                 >
                   <ListPlus color="white" />
                   Watchlist
@@ -57,7 +57,7 @@ export function LoggedInUser() {
                 <div className="w-full border border-zinc-800" />
                 <Link
                   href="#"
-                  className="flex items-center gap-4 font-poppins text-white"
+                  className="flex items-center gap-4 rounded-lg bg-transparent p-2 font-poppins  text-white transition duration-300 ease-in-out hover:bg-zinc-800 active:bg-zinc-700"
                 >
                   <History color="white" />
                   Watch History
@@ -65,9 +65,9 @@ export function LoggedInUser() {
                 <div className="w-full border border-zinc-800" />
                 <button
                   onClick={() => signOut()}
-                  className="flex items-center gap-4 font-poppins text-[#F84550] outline-none"
+                  className=" group flex items-center gap-4 rounded-lg bg-transparent p-2 font-poppins text-[#F84550] outline-none transition duration-300 ease-in-out hover:bg-zinc-800 hover:text-red-400 active:bg-zinc-700"
                 >
-                  <LogOut color="#F84550" />
+                  <LogOut className="text-[#F84550] group-hover:text-red-400" />
                   Unsubscribe
                 </button>
               </div>

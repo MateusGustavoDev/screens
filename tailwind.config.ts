@@ -86,6 +86,8 @@ module.exports = {
         poppins: ["var(--font-poppins)"],
       },
       screen: {
+        "max-sm": { max: 640 },
+        "max-md": { max: 768 },
         "max-lg": { max: 1024 },
       },
     },

@@ -6,7 +6,7 @@ export { MovieCard } from "./movie-card";
 export { PlayNowButton } from "./play-now-button";
 export { WatchListButton } from "./watch-list-button";
 export { LoggedInUser } from "./logged-in-user";
-export { MovieRecommended } from "./movie-recommended";
+export { RecommendedMovies } from "./recommended-movies";
 export { Logo } from "./logo";
 export { Footer } from "./footer";
 export { MovieCarousel } from "./movie-carousel";

@@ -4,7 +4,7 @@ import { getGenreById } from "@/utils/movie-genre-by-id";
 import { PlayNowButton, WatchListButton } from ".";
 import styles from "@/app/gradient.module.css";
 
-export function MovieRecommended() {
+export function RecommendedMovies() {
   const { data } = useTrendingMovies();
 
   let releaseYear = "";

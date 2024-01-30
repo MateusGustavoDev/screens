@@ -52,8 +52,8 @@ export function MovieCarousel({ text, children }: MovieCarouselProps) {
   }
 
   return (
-    <div className="m-auto flex w-full flex-col gap-10 py-12">
-      <span className="font-poppins text-3xl font-semibold text-white">
+    <div className="m-auto flex w-full flex-col gap-10 px-5 py-12 max-lg:py-8 max-sm:gap-4 max-sm:py-5">
+      <span className="font-poppins text-3xl font-semibold text-white max-sm:text-xl">
         {text}
       </span>
       <div className="relative">

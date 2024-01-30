@@ -3,14 +3,14 @@ import { useSession } from "next-auth/react";
 import {
   Banner,
   MovieCard,
-  MovieRecommended,
+  RecommendedMovies,
   MovieCarousel,
 } from "@/components/ui";
 import { useUpcomingMovies } from "@/hooks/useUpcomingMovies";
 import { usePopularMovies } from "@/hooks/usePopularMovies";
 import { useTrendingMovies } from "@/hooks/useTrendingMovies";
-import { CarouselSkeleton } from "@/components/ui/skeletons/MovieCardSkeleton";
-import { MovieRecommendedSkeleton } from "@/components/ui/skeletons/recommended-movie-skeleton";
+import { CarouselSkeleton } from "@/components/ui/skeletons/movie-carousel-skeleton";
+import { RecommendedMoviesSkeleton } from "@/components/ui/skeletons/recommended-movie-skeleton";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -26,9 +26,9 @@ export default function Home() {
       {session ? (
         <>
           {IsLoadingPopularMovies ? (
-            <MovieRecommendedSkeleton />
+            <RecommendedMoviesSkeleton />
           ) : (
-            <MovieRecommended />
+            <RecommendedMovies />
           )}
         </>
       ) : (
@@ -42,8 +42,9 @@ export default function Home() {
           {trendingMovies?.map((movie) => (
             <MovieCard
               key={movie.id}
+              id={movie.id}
               name={movie.title}
-              movieImage={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_URL}${movie.poster_path}`}
+              movieImage={movie.poster_path}
             />
           ))}
         </MovieCarousel>
@@ -56,8 +57,9 @@ export default function Home() {
           {popularMovies?.map((movie) => (
             <MovieCard
               key={movie.id}
+              id={movie.id}
               name={movie.title}
-              movieImage={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_URL}${movie.backdrop_path}`}
+              movieImage={movie.backdrop_path}
               horizontal
             />
           ))}
@@ -71,8 +73,9 @@ export default function Home() {
           {upcomingMovies?.map((movie) => (
             <MovieCard
               key={movie.id}
+              id={movie.id}
               name={movie.title}
-              movieImage={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_URL}${movie.poster_path}`}
+              movieImage={movie.poster_path}
             />
           ))}
         </MovieCarousel>

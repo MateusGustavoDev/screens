@@ -1,8 +1,13 @@
-export function Logo() {
+import { ComponentProps } from "react";
+
+interface LogoProps extends ComponentProps<"svg"> {
+  size?: number;
+}
+
+export function Logo({ size = 40 }: LogoProps) {
   return (
     <svg
-      width="170"
-      height="44"
+      className={`h-[44px] w-[170px] max-sm:h-[30px] max-sm:w-[110px]`}
       viewBox="0 0 170 44"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

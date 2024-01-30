@@ -5,13 +5,17 @@ interface MovieCardSkeletonProps {
   horizontal?: boolean;
 }
 
-function MovieCardSkeleton({ horizontal }: MovieCardSkeletonProps) {
+export function MovieCardSkeleton({ horizontal }: MovieCardSkeletonProps) {
   return (
     <>
       {horizontal ? (
-        <Skeleton width={400} height={240} />
+        <div className="h-[240px] w-[400px] bg-top max-lg:h-[190px] max-lg:w-[350px] max-sm:h-[168px] max-sm:w-[277px]">
+          <Skeleton width={"100%"} height={"100%"} />
+        </div>
       ) : (
-        <Skeleton width={214} height={290} />
+        <div className="h-[290px] w-[214px] bg-center max-lg:h-[240px] max-lg:w-[190px] max-sm:h-[136px] max-sm:w-[100px]">
+          <Skeleton width={"100%"} height={"100%"} />
+        </div>
       )}
     </>
   );

@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={`${poppins.variable} bg-base-400`}>
         <Providers>
           <Header />
-          <div className="m-auto min-h-screen max-w-[1500px]">{children}</div>
+          <div className="m-auto min-h-screen max-w-[1540px]">{children}</div>
           <Footer />
         </Providers>
       </body>
