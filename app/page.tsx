@@ -23,7 +23,8 @@ export default function Home() {
 
   return (
     <div>
-      {session ? (
+      <RecommendedMovies />
+      {/* {session ? (
         <>
           {IsLoadingPopularMovies ? (
             <RecommendedMoviesSkeleton />
@@ -33,7 +34,7 @@ export default function Home() {
         </>
       ) : (
         <Banner />
-      )}
+      )} */}
 
       {IsLoadingTrendingMovies ? (
         <CarouselSkeleton />

@@ -44,7 +44,7 @@ export default function Page({ searchParams }: SearchParamsProps) {
 
   return (
     <div>
-      <div className="flex gap-6">
+      <div className="flex gap-6 ">
         {movieInfoIsLoading ? (
           <>
             <MoviePlayerSkeleton />
@@ -63,7 +63,9 @@ export default function Page({ searchParams }: SearchParamsProps) {
                   runtime={movieInfo.runtime}
                   youtubeKey={movieTrailer[0].key}
                 />
-                <MoviesForYou />
+                <div className="max-2xl:hidden">
+                  <MoviesForYou />
+                </div>
               </>
             )}
           </>
@@ -73,17 +75,19 @@ export default function Page({ searchParams }: SearchParamsProps) {
       {movieInfoIsLoading ? (
         <CarouselSkeleton horizontal />
       ) : (
-        <MovieCarousel text="Related Videos">
-          {data?.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              id={movie.id}
-              name={movie.title}
-              horizontal
-              movieImage={movie.backdrop_path}
-            />
-          ))}
-        </MovieCarousel>
+        <div className="max-md:mt-4">
+          <MovieCarousel text="Related Videos">
+            {data?.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                id={movie.id}
+                name={movie.title}
+                horizontal
+                movieImage={movie.backdrop_path}
+              />
+            ))}
+          </MovieCarousel>
+        </div>
       )}
     </div>
   );

@@ -89,6 +89,7 @@ module.exports = {
         "max-sm": { max: 640 },
         "max-md": { max: 768 },
         "max-lg": { max: 1024 },
+        "max-3xl": { max: 1506 },
       },
     },
   },

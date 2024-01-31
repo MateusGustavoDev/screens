@@ -7,7 +7,10 @@ export function MobileMenu() {
     <Sheet>
       <SheetTrigger asChild>
         <button>
-          <AlignJustify color="white" size={26} />
+          <AlignJustify
+            color="white"
+            className="h-7 w-7 max-sm:h-6 max-sm:w-6"
+          />
         </button>
       </SheetTrigger>
       <SheetContent className="border-l-2 border-l-zinc-800 bg-base-400">

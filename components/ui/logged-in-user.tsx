@@ -13,7 +13,7 @@ export function LoggedInUser() {
       <Dialog.Root>
         <Dialog.Trigger asChild>
           <div classNrounded-lge="rounded-full rounded-md bg-transparent p-2 transition duration-300 ease-in-out hover:bg-zinc-800 active:bg-zinc-700">
-            <Avatar className="h-11 w-11 cursor-pointer select-none">
+            <Avatar className="h-11 w-11 cursor-pointer select-none max-sm:h-9 max-sm:w-9">
               {session &&
                 (session.user?.image ? (
                   <AvatarImage src={session?.user?.image} />
@@ -21,7 +21,7 @@ export function LoggedInUser() {
             </Avatar>
           </div>
         </Dialog.Trigger>
-        <Dialog.Content className="select-none data-[state=open]:animate-[dialog-overlay-show_300ms]">
+        <Dialog.Content className="absoltue select-none data-[state=open]:animate-[dialog-overlay-show_300ms]">
           <div className="relative">
             <div className="absolute right-0 mt-2 flex w-[257px] flex-col gap-6 rounded-lg bg-[#15161C] p-6 shadow-lg">
               <div className="flex flex-col items-center justify-center gap-3">

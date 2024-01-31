@@ -1,8 +1,6 @@
 .gradient {
-  width: 50%;
-  height: 100%;
   position: absolute;
-  z-index: 40;
+  z-index: 30;
   background: linear-gradient(
     90deg,
     #0d0d0d 10%,
@@ -24,3 +22,4 @@
     hsla(0, 0%, 4%, 0)
   );
 }
+
