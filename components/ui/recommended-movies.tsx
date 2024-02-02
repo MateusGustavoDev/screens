@@ -1,18 +1,18 @@
-"use client";
-import { useTrendingMovies } from "@/hooks/useTrendingMovies";
-import { getGenreById } from "@/utils/movie-genre-by-id";
-import { PlayNowButton, WatchListButton } from ".";
-import styles from "@/app/gradient.module.css";
+'use client'
+import { useTrendingMovies } from '@/hooks/useTrendingMovies'
+import { getGenreById } from '@/utils/movie-genre-by-id'
+import { PlayNowButton, WatchListButton } from '.'
+import styles from '@/app/styles/gradient.module.css'
 
 export function RecommendedMovies() {
-  const { data } = useTrendingMovies();
+  const { data } = useTrendingMovies()
 
-  let releaseYear = "";
+  let releaseYear = ''
 
   if (data) {
-    releaseYear = data[0].release_date;
+    releaseYear = data[0].release_date
 
-    releaseYear = new Date(releaseYear).getFullYear().toString();
+    releaseYear = new Date(releaseYear).getFullYear().toString()
   }
 
   return (
@@ -65,5 +65,5 @@ export function RecommendedMovies() {
         <div className="aspect-[1600/800] bg-zinc-900"></div>
       )}
     </div>
-  );
+  )
 }

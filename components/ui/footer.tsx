@@ -1,8 +1,8 @@
-import Link from "next/link";
-import facebook from "@/public/facebook.svg";
-import instagram from "@/public/instagram.svg";
-import Image from "next/image";
-import { Logo } from ".";
+import Link from 'next/link'
+import facebook from '@/public/facebook.svg'
+import instagram from '@/public/instagram.svg'
+import Image from 'next/image'
+import { Logo } from '.'
 
 export function Footer() {
   return (
@@ -41,5 +41,5 @@ export function Footer() {
         ©2021 All rights reserved
       </span>
     </div>
-  );
+  )
 }

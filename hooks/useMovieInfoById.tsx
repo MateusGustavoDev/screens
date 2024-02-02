@@ -1,19 +1,11 @@
 "use client";
+import { api } from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
 
 async function getMovieInfoById(id: number): Promise<any | undefined> {
-  const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: process.env.NEXT_PUBLIC_TMDB_API_ACCESS_TOKEN,
-    },
-  };
-
   try {
-    const data = await fetch(url, options);
-    const movieInfo = await data.json();
+    const response = await api(`/movie/${id}?language=en-US`);
+    const movieInfo = await response.data;
     return movieInfo;
   } catch (error) {
     console.error("error: " + error);

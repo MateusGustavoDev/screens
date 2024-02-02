@@ -1,14 +1,14 @@
-import { convertMinutesToHoursAndMinutes } from "@/utils/minutes-to-hours";
-import { Download, ListPlus, Share2 } from "lucide-react";
+import { convertMinutesToHoursAndMinutes } from '@/utils/minutes-to-hours'
+import { Download, ListPlus, Share2 } from 'lucide-react'
 
 interface MoviePlayerProps {
-  id: number;
-  name: string;
-  overview: string;
-  productionCompanies: string;
-  releaseDate: string;
-  youtubeKey: string;
-  runtime: number;
+  id: number
+  name: string
+  overview: string
+  productionCompanies: string
+  releaseDate: string
+  youtubeKey: string | null
+  runtime: number
 }
 
 export function MoviePlayer({
@@ -20,8 +20,8 @@ export function MoviePlayer({
   youtubeKey,
   runtime,
 }: MoviePlayerProps) {
-  const runtimeFormatted = convertMinutesToHoursAndMinutes(runtime);
-  const releaseYear = new Date(releaseDate);
+  const runtimeFormatted = convertMinutesToHoursAndMinutes(runtime)
+  const releaseYear = new Date(releaseDate)
 
   return (
     <div className="w-full max-w-[1040px] max-2xl:max-w-[2000px]">
@@ -31,6 +31,7 @@ export function MoviePlayer({
             className="absolute left-0 top-0 aspect-video h-full w-full"
             src={`https://www.youtube.com/embed/${youtubeKey}`}
             allow="accelerometer; autoplay; encrypted-media; gyroscope;"
+            allowFullScreen
           />
         </div>
       </div>
@@ -42,7 +43,7 @@ export function MoviePlayer({
             </span>
             <div className="flex flex-col gap-2">
               <span className="font-poppins text-lg font-semibold text-white max-lg:text-sm">
-                {releaseYear.getFullYear()} · {runtimeFormatted.hours}h{" "}
+                {releaseYear.getFullYear()} · {runtimeFormatted.hours}h{' '}
                 {runtimeFormatted.minutes}m
               </span>
               <span className="font-poppins text-sm text-zinc-400">
@@ -86,5 +87,5 @@ export function MoviePlayer({
         </div>
       </div>
     </div>
-  );
+  )
 }

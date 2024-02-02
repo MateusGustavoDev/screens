@@ -1,15 +1,15 @@
-"use client";
-import { AuthProvider } from "@/providers/auth";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { ReactNode } from "react";
-import { SkeletonTheme } from "react-loading-skeleton";
+'use client'
+import { AuthProvider } from '@/providers/auth'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { ReactNode } from 'react'
+import { SkeletonTheme } from 'react-loading-skeleton'
 
 interface ProvidersProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
 export function Providers({ children }: ProvidersProps) {
   return (
@@ -24,5 +24,5 @@ export function Providers({ children }: ProvidersProps) {
         </SkeletonTheme>
       </QueryClientProvider>
     </AuthProvider>
-  );
+  )
 }

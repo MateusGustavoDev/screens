@@ -1,4 +1,4 @@
-import { ListPlus } from "lucide-react";
+import { ListPlus } from 'lucide-react'
 
 export function WatchListButton() {
   return (
@@ -6,5 +6,5 @@ export function WatchListButton() {
       <ListPlus />
       Watch list
     </button>
-  );
+  )
 }

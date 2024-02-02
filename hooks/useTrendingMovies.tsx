@@ -1,4 +1,5 @@
 "use client";
+import { api } from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
 
 type TrendingMovies = {
@@ -20,18 +21,9 @@ type TrendingMovies = {
 };
 
 async function getTrendingMovies(): Promise<TrendingMovies[] | undefined> {
-  const url = "https://api.themoviedb.org/3/trending/movie/day?language=en-US";
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: process.env.NEXT_PUBLIC_TMDB_API_ACCESS_TOKEN,
-    },
-  };
-
   try {
-    const data = await fetch(url, options);
-    const trendingMovies = await data.json();
+    const response = await api("/trending/movie/day?language=en-US");
+    const trendingMovies = await response.data;
     return trendingMovies.results;
   } catch (error) {
     console.error("error: " + error);

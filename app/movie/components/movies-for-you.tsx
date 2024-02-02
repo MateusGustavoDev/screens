@@ -1,9 +1,9 @@
-"use client";
-import { MovieCard } from "@/components/ui";
-import { useTrendingMovies } from "@/hooks/useTrendingMovies";
+'use client'
+import { MovieCard } from '@/components/ui'
+import { useTrendingMovies } from '@/hooks/useTrendingMovies'
 
 export function MoviesForYou() {
-  const { data } = useTrendingMovies();
+  const { data } = useTrendingMovies()
   return (
     <div className="flex flex-col gap-8">
       <span className="font-poppins text-2xl font-semibold text-white">
@@ -22,5 +22,5 @@ export function MoviesForYou() {
           ))}
       </div>
     </div>
-  );
+  )
 }

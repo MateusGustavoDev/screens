@@ -1,10 +1,10 @@
-import Link from "next/link";
+import Link from 'next/link'
 
 interface MovieCardProps {
-  id: number;
-  name: string;
-  movieImage: string;
-  horizontal?: boolean;
+  id: number
+  name: string
+  movieImage: string
+  horizontal?: boolean
 }
 
 export function MovieCard({
@@ -14,12 +14,12 @@ export function MovieCard({
   name,
 }: MovieCardProps) {
   return (
-    <Link href={`movie?id=${id}`}>
+    <Link href={`movie?id=${id}`} target="_blank">
       <div
         className={`group relative  ${
           horizontal
-            ? "h-[240px] w-[400px] bg-top max-lg:h-[190px] max-lg:w-[350px] max-sm:h-[168px] max-sm:w-[277px]"
-            : "h-[290px] w-[214px] bg-center max-lg:h-[240px] max-lg:w-[190px] max-sm:h-[136px] max-sm:w-[100px]"
+            ? 'h-[240px] w-[400px] bg-top max-lg:h-[190px] max-lg:w-[350px] max-sm:h-[168px] max-sm:w-[277px]'
+            : 'h-[290px] w-[214px] bg-center max-lg:h-[240px] max-lg:w-[190px] max-sm:h-[136px] max-sm:w-[100px]'
         } shrink-0 rounded bg-cover`}
         style={{
           backgroundImage: `url(${
@@ -34,5 +34,5 @@ export function MovieCard({
         </div>
       </div>
     </Link>
-  );
+  )
 }

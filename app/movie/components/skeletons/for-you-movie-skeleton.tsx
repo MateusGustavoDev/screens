@@ -1,5 +1,5 @@
-import { MovieCardSkeleton } from "@/components/ui/skeletons/movie-carousel-skeleton";
-import Skeleton from "react-loading-skeleton";
+import { MovieCardSkeleton } from '@/components/ui/skeletons/movie-carousel-skeleton'
+import Skeleton from 'react-loading-skeleton'
 
 export function ForYouMovieSkeleton() {
   return (
@@ -14,5 +14,5 @@ export function ForYouMovieSkeleton() {
         <MovieCardSkeleton />
       </div>
     </div>
-  );
+  )
 }

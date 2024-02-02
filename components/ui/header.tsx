@@ -1,15 +1,16 @@
-"use client";
-import Link from "next/link";
-import { Clapperboard, Drama, Film, Home, Tv, Youtube } from "lucide-react";
-import { signIn, useSession } from "next-auth/react";
-import { ActionButton, LoggedInUser, Logo, SearchInput } from ".";
-import { MobileMenu } from "./mobile-menu";
+'use client'
+import Link from 'next/link'
+import { Clapperboard, Drama, Film, Home, Search } from 'lucide-react'
+import { signIn, useSession } from 'next-auth/react'
+import { ActionButton, LoggedInUser, Logo } from '.'
+import { SearchInput } from './search-input'
+import { MobileMenu } from './mobile-menu'
 
 export function Header() {
-  const { data: session } = useSession();
+  const { data: session } = useSession()
 
   return (
-    <div className="sticky bottom-0 z-50 w-full">
+    <div className="sticky bottom-0 z-40 w-full">
       <div className="m-auto flex h-[5.5rem] w-full max-w-[1540px] items-center px-5 max-sm:h-[70px]">
         <Link href="/">
           <Logo />
@@ -50,18 +51,25 @@ export function Header() {
               <MobileMenu />
             </div>
             <div className="flex items-center gap-12">
-              <button className="flex h-max w-max cursor-pointer items-center justify-center rounded-full bg-transparent p-3 outline-none transition duration-300 ease-in-out hover:bg-zinc-900 active:bg-zinc-800 max-lg:hidden">
-                <SearchInput />
-              </button>
+              <div className="max-lg:hidden">
+                <SearchInput.Root>
+                  <SearchInput.Trigger>
+                    <button className="flex h-max w-max cursor-pointer items-center justify-center rounded-full bg-transparent p-3 outline-none transition duration-300 ease-in-out hover:bg-zinc-900 active:bg-zinc-800">
+                      <Search size={22} color="white" />
+                    </button>
+                  </SearchInput.Trigger>
+                </SearchInput.Root>
+              </div>
               {session ? (
                 <LoggedInUser />
               ) : (
-                <ActionButton onClick={() => signIn()} text="sign in" />
+                // <ActionButton onClick={() => signIn()} text="sign in" />
+                <ActionButton text="sign in" />
               )}
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }

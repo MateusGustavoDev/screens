@@ -1,8 +1,8 @@
-import { Play } from "lucide-react";
-import Link from "next/link";
+import { Play } from 'lucide-react'
+import Link from 'next/link'
 
 interface PlayNowButtonProps {
-  id: number;
+  id: number
 }
 
 export function PlayNowButton({ id }: PlayNowButtonProps) {
@@ -16,5 +16,5 @@ export function PlayNowButton({ id }: PlayNowButtonProps) {
         Play Now
       </button>
     </Link>
-  );
+  )
 }

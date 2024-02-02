@@ -1,4 +1,5 @@
 "use client";
+import { api } from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
 
 interface UpcomingMovies {
@@ -20,19 +21,9 @@ interface UpcomingMovies {
 }
 
 async function getUpcomingMovies(): Promise<UpcomingMovies[] | undefined> {
-  const url =
-    "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: process.env.NEXT_PUBLIC_TMDB_API_ACCESS_TOKEN,
-    },
-  };
-
   try {
-    const data = await fetch(url, options);
-    const upcomingMovies = await data.json();
+    const response = await api("/movie/upcoming?language=en-US&page=1");
+    const upcomingMovies = await response.data;
     return upcomingMovies.results;
   } catch (error) {
     console.error("error: " + error);

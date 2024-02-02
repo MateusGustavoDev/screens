@@ -1,46 +1,40 @@
-"use client";
-import { MovieCard, MovieCarousel } from "@/components/ui";
-import { MoviesForYou } from "./components/movies-for-you";
-import { MoviePlayer } from "./components/movie-player";
-import { usePopularMovies } from "@/hooks/usePopularMovies";
-import { useMovieInfoById } from "@/hooks/useMovieInfoById";
-import { useQuery } from "@tanstack/react-query";
-import { MoviePlayerSkeleton } from "./components/skeletons/movie-player-skeleton";
-import { ForYouMovieSkeleton } from "./components/skeletons/for-you-movie-skeleton";
-import { CarouselSkeleton } from "@/components/ui/skeletons/movie-carousel-skeleton";
+'use client'
+import { MovieCard, MovieCarousel } from '@/components/ui'
+import { MoviesForYou } from './components/movies-for-you'
+import { MoviePlayer } from './components/movie-player'
+import { usePopularMovies } from '@/hooks/usePopularMovies'
+import { useMovieInfoById } from '@/hooks/useMovieInfoById'
+import { useQuery } from '@tanstack/react-query'
+import { MoviePlayerSkeleton } from './components/skeletons/movie-player-skeleton'
+import { ForYouMovieSkeleton } from './components/skeletons/for-you-movie-skeleton'
+import { CarouselSkeleton } from '@/components/ui/skeletons/movie-carousel-skeleton'
+import { api } from '@/lib/axios'
 
 interface SearchParamsProps {
   searchParams: {
-    id: number;
-  };
+    id: number
+  }
 }
 
 export default function Page({ searchParams }: SearchParamsProps) {
-  const { data } = usePopularMovies();
+  const { data } = usePopularMovies()
   const { data: movieInfo, isLoading: movieInfoIsLoading } = useMovieInfoById(
     searchParams.id,
-  );
+  )
 
   async function getMovieTrailer() {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: process.env.NEXT_PUBLIC_TMDB_API_ACCESS_TOKEN,
-      },
-    };
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${searchParams.id}/videos?language=en-US`,
-      options,
-    );
-    const data = await response.json();
-    return data.results;
+    const response = await api(
+      `/movie/${searchParams.id}/videos?language=en-US`,
+    )
+
+    const data = await response.data
+    return data.results
   }
 
   const { data: movieTrailer } = useQuery({
-    queryKey: ["movie-trailer"],
+    queryKey: ['movie-trailer'],
     queryFn: getMovieTrailer,
-  });
+  })
 
   return (
     <div>
@@ -48,11 +42,13 @@ export default function Page({ searchParams }: SearchParamsProps) {
         {movieInfoIsLoading ? (
           <>
             <MoviePlayerSkeleton />
-            <ForYouMovieSkeleton />
+            <div className="max-2xl:hidden">
+              <ForYouMovieSkeleton />
+            </div>
           </>
         ) : (
           <>
-            {movieInfo && (
+            {movieInfo && movieTrailer && (
               <>
                 <MoviePlayer
                   id={movieInfo.id}
@@ -90,5 +86,5 @@ export default function Page({ searchParams }: SearchParamsProps) {
         </div>
       )}
     </div>
-  );
+  )
 }

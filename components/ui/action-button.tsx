@@ -1,8 +1,8 @@
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes } from 'react'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  size?: number;
-  text: string;
+  size?: number
+  text: string
 }
 
 export function ActionButton({ size, text, ...rest }: ButtonProps) {
@@ -13,5 +13,5 @@ export function ActionButton({ size, text, ...rest }: ButtonProps) {
     >
       {text}
     </button>
-  );
+  )
 }

@@ -1,12 +1,12 @@
-"use client";
-import { signOut, useSession } from "next-auth/react";
-import { Avatar, AvatarImage } from "./avatar";
-import Link from "next/link";
-import { History, ListPlus, LogOut, User } from "lucide-react";
-import * as Dialog from "@radix-ui/react-dialog";
+'use client'
+import { signOut, useSession } from 'next-auth/react'
+import { Avatar, AvatarImage } from './avatar'
+import Link from 'next/link'
+import { History, ListPlus, LogOut, User } from 'lucide-react'
+import * as Dialog from '@radix-ui/react-dialog'
 
 export function LoggedInUser() {
-  const { data: session } = useSession();
+  const { data: session } = useSession()
 
   return (
     <div>
@@ -76,5 +76,5 @@ export function LoggedInUser() {
         </Dialog.Content>
       </Dialog.Root>
     </div>
-  );
+  )
 }

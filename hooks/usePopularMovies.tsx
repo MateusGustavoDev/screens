@@ -1,3 +1,4 @@
+import { api } from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
 
 export interface PopularMovies {
@@ -18,19 +19,9 @@ export interface PopularMovies {
 }
 
 async function getPopularMovies(): Promise<PopularMovies[] | undefined> {
-  const url =
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: process.env.NEXT_PUBLIC_TMDB_API_ACCESS_TOKEN,
-    },
-  };
-
   try {
-    const data = await fetch(url, options);
-    const popularMovies = await data.json();
+    const response = await api("/movie/popular?language=en-US&page=1");
+    const popularMovies = await response.data;
     return popularMovies.results;
   } catch (error) {
     console.error("error: " + error);

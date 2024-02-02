@@ -1,25 +1,29 @@
-"use client";
-import { useSession } from "next-auth/react";
+'use client'
+import { useSession } from 'next-auth/react'
 import {
   Banner,
   MovieCard,
   RecommendedMovies,
   MovieCarousel,
-} from "@/components/ui";
-import { useUpcomingMovies } from "@/hooks/useUpcomingMovies";
-import { usePopularMovies } from "@/hooks/usePopularMovies";
-import { useTrendingMovies } from "@/hooks/useTrendingMovies";
-import { CarouselSkeleton } from "@/components/ui/skeletons/movie-carousel-skeleton";
-import { RecommendedMoviesSkeleton } from "@/components/ui/skeletons/recommended-movie-skeleton";
+} from '@/components/ui'
+import { useUpcomingMovies } from '@/hooks/useUpcomingMovies'
+import { usePopularMovies } from '@/hooks/usePopularMovies'
+import { useTrendingMovies } from '@/hooks/useTrendingMovies'
+import { CarouselSkeleton } from '@/components/ui/skeletons/movie-carousel-skeleton'
+import { RecommendedMoviesSkeleton } from '@/components/ui/skeletons/recommended-movie-skeleton'
 
 export default function Home() {
-  const { data: session } = useSession();
+  const { data: session } = useSession()
   const { data: popularMovies, isLoading: IsLoadingPopularMovies } =
-    usePopularMovies();
+    usePopularMovies()
   const { data: upcomingMovies, isLoading: IsLoadingUpcomingMovies } =
-    useUpcomingMovies();
+    useUpcomingMovies()
   const { data: trendingMovies, isLoading: IsLoadingTrendingMovies } =
-    useTrendingMovies();
+    useTrendingMovies()
+
+  // const IsLoadingPopularMovies = true;
+  // const IsLoadingUpcomingMovies = true;
+  // const IsLoadingTrendingMovies = true;
 
   return (
     <div>
@@ -82,5 +86,5 @@ export default function Home() {
         </MovieCarousel>
       )}
     </div>
-  );
+  )
 }
