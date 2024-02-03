@@ -16,7 +16,7 @@ export function RecommendedMovies() {
   }
 
   return (
-    <div className="m-auto max-w-[1500px] bg-slate-500  max-md:h-max">
+    <div className="m-auto max-w-[1500px] max-md:h-max">
       {data ? (
         <div className="relative">
           <div
