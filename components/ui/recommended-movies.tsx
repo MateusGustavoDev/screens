@@ -17,9 +17,6 @@ export function RecommendedMovies() {
 
   return (
     <div className="m-auto max-w-[1500px] max-md:h-max">
-      {data && (
-        <span className="font-semibold text-white">{`process.env.NEXT_PUBLIC_TMDB_API_ACCESS_TOKEN${data[0].poster_path}`}</span>
-      )}
       {data ? (
         <div className="relative">
           <div
