@@ -14,7 +14,7 @@ export function MovieCard({
   name,
 }: MovieCardProps) {
   return (
-    <Link href={`movie?id=${id}`} target="_blank">
+    <Link href={`movie?id=${id}`}>
       <div
         className={`group relative  ${
           horizontal

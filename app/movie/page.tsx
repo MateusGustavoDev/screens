@@ -9,6 +9,7 @@ import { MoviePlayerSkeleton } from './components/skeletons/movie-player-skeleto
 import { ForYouMovieSkeleton } from './components/skeletons/for-you-movie-skeleton'
 import { CarouselSkeleton } from '@/components/ui/skeletons/movie-carousel-skeleton'
 import { api } from '@/lib/axios'
+import { useEffect } from 'react'
 
 interface SearchParamsProps {
   searchParams: {
@@ -17,10 +18,12 @@ interface SearchParamsProps {
 }
 
 export default function Page({ searchParams }: SearchParamsProps) {
-  const { data } = usePopularMovies()
-  const { data: movieInfo, isLoading: movieInfoIsLoading } = useMovieInfoById(
-    searchParams.id,
-  )
+  const { data, refetch: popularMoviesRefetch } = usePopularMovies()
+  const {
+    data: movieInfo,
+    isLoading: movieInfoIsLoading,
+    refetch: movieInfoRefetch,
+  } = useMovieInfoById(searchParams.id)
 
   async function getMovieTrailer() {
     const response = await api(
@@ -31,10 +34,21 @@ export default function Page({ searchParams }: SearchParamsProps) {
     return data.results
   }
 
-  const { data: movieTrailer } = useQuery({
+  const { data: movieTrailer, refetch: movieTrailerRefetch } = useQuery({
     queryKey: ['movie-trailer'],
     queryFn: getMovieTrailer,
   })
+
+  useEffect(() => {
+    popularMoviesRefetch()
+    movieInfoRefetch()
+    movieTrailerRefetch()
+  }, [
+    searchParams.id,
+    popularMoviesRefetch,
+    movieTrailerRefetch,
+    movieInfoRefetch,
+  ])
 
   return (
     <div>

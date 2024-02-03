@@ -64,7 +64,6 @@ export function SearchInputRoot({ children }: SearchInputRootProps) {
                   <Dialog.Close asChild key={movie.id}>
                     <Link
                       href={`movie?id=${movie.id}`}
-                      target="_blank"
                       onClick={() => {
                         setDebouncedInputValue(''), setInputText('')
                       }}
