@@ -1,6 +1,5 @@
 'use client'
 import { ReactNode, useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
 import { CarouselButton } from './carousel-button'
 
 interface MovieCarouselProps {
@@ -10,8 +9,7 @@ interface MovieCarouselProps {
 
 export function MovieCarousel({ text, children }: MovieCarouselProps) {
   const carousel = useRef<HTMLDivElement>(null)
-  const [width, setWidth] = useState(0)
-  const [scrollX, setScrollX] = useState(0)
+  const [offsetWidth, setOffsetWidth] = useState<number>(0)
   const [windowWidth, setWindowWidth] = useState(false)
 
   useEffect(() => {
@@ -25,30 +23,20 @@ export function MovieCarousel({ text, children }: MovieCarouselProps) {
   }, [])
 
   useEffect(() => {
-    if (carousel.current) {
-      setWidth(carousel?.current?.scrollWidth - carousel.current?.offsetWidth)
+    if (carousel.current?.scrollWidth) {
+      setOffsetWidth(carousel.current.offsetWidth)
     }
-    // eslint-disable-next-line
-  }, [carousel.current]);
+  }, [])
 
   function scrollNext() {
     if (carousel.current) {
-      const offsetWidth = carousel.current.offsetWidth
-      if (scrollX < width) {
-        if (scrollX + offsetWidth < width) {
-          setScrollX(scrollX + offsetWidth)
-        }
-      }
+      carousel.current.scrollLeft += offsetWidth
     }
   }
 
   function scrollPrevious() {
     if (carousel.current) {
-      const offsetWidth = carousel.current.offsetWidth
-      if (scrollX > 0) {
-        setScrollX(scrollX - offsetWidth)
-      }
-      console.log(scrollX)
+      carousel.current.scrollLeft -= offsetWidth
     }
   }
 
@@ -58,31 +46,19 @@ export function MovieCarousel({ text, children }: MovieCarouselProps) {
         {text}
       </span>
       <div className="relative">
-        <motion.div
-          className="relative w-full overflow-hidden"
-          whileTap={{ cursor: 'grabbing' }}
-          ref={carousel}
-        >
-          {windowWidth ? (
-            <motion.div
-              drag="x"
-              dragConstraints={{ right: 0, left: -width }}
-              className="w-ful flex cursor-pointer gap-4"
-            >
-              {children}
-            </motion.div>
-          ) : (
-            <div
-              className="w-ful flex cursor-pointer gap-4"
-              style={{
-                transform: ` translateX(${-scrollX}px)`,
-                transition: 'transform 0.4s ease-in-out',
-              }}
-            >
-              {children}
-            </div>
-          )}
-        </motion.div>
+        {windowWidth ? (
+          <div className="w-ful flex cursor-pointer gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+            {children}
+          </div>
+        ) : (
+          <div
+            ref={carousel}
+            className="flex w-full cursor-pointer gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden"
+            style={{ scrollBehavior: 'smooth' }}
+          >
+            {children}
+          </div>
+        )}
         <CarouselButton arrow="left" onClick={scrollPrevious} />
         <CarouselButton arrow="right" onClick={scrollNext} />
       </div>
