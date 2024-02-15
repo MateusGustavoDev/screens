@@ -2,15 +2,15 @@
 import Link from 'next/link'
 import { Clapperboard, Drama, Film, Home, Search } from 'lucide-react'
 import { signIn, useSession } from 'next-auth/react'
-import { ActionButton, LoggedInUser, Logo } from '.'
-import { SearchInput } from './search-input'
-import { MobileMenu } from './mobile-menu'
+import { ActionButton, LoggedInUser, Logo } from '..'
+import { SearchInput } from '../search-input'
+import { MobileMenu } from '../mobile-menu'
 
 export function Header() {
   const { data: session } = useSession()
 
   return (
-    <div className="sticky bottom-0 z-40 w-full">
+    <div className="sticky bottom-0 z-40 w-full bg-base-400">
       <div className="m-auto flex h-[5.5rem] w-full max-w-[1540px] items-center px-5 max-sm:h-[70px]">
         <Link href="/">
           <Logo />
