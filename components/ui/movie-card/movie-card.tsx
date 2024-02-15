@@ -1,12 +1,13 @@
 import Link from 'next/link'
 
+//** Card do filme */
+
 interface MovieCardProps {
   id: number
   name: string
   movieImage: string
   horizontal?: boolean
 }
-
 export function MovieCard({
   id,
   horizontal,

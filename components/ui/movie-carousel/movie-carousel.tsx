@@ -1,6 +1,6 @@
 'use client'
 import { ReactNode, useEffect, useRef, useState } from 'react'
-import { CarouselButton } from './carousel-button'
+import { CarouselButton } from '../carousel-button'
 
 interface MovieCarouselProps {
   text: string
@@ -41,7 +41,7 @@ export function MovieCarousel({ text, children }: MovieCarouselProps) {
   }
 
   return (
-    <div className="m-auto flex w-full flex-col gap-10 px-10 py-12 max-lg:px-0 max-lg:py-8 max-lg:pl-5 max-sm:gap-4 max-sm:py-5">
+    <div className="m-auto flex w-full flex-col gap-10 bg-base-400 px-10 py-12 max-lg:px-0 max-lg:py-8 max-lg:pl-5 max-sm:gap-4 max-sm:py-5">
       <span className="font-poppins text-3xl font-semibold text-white max-sm:text-xl">
         {text}
       </span>
