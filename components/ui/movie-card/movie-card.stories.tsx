@@ -5,6 +5,9 @@ const meta: Meta<typeof MovieCard> = {
   title: 'ui/MovieCard',
   component: MovieCard,
   tags: ['autodocs'],
+  parameters: {
+    componentSubtitle: 'Card do filme',
+  },
   argTypes: {
     movieImage: {
       control: 'text',
