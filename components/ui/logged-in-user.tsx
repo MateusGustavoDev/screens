@@ -21,7 +21,7 @@ export function LoggedInUser() {
             </Avatar>
           </div>
         </Dialog.Trigger>
-        <Dialog.Content className="absoltue select-none data-[state=open]:animate-[dialog-overlay-show_300ms]">
+        <Dialog.Content className="select-none data-[state=open]:animate-[dialog-overlay-show_300ms]">
           <div className="relative">
             <div className="absolute right-0 mt-2 flex w-[257px] flex-col gap-6 rounded-lg bg-[#15161C] p-6 shadow-lg">
               <div className="flex flex-col items-center justify-center gap-3">

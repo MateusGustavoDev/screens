@@ -10,7 +10,7 @@ export function RecommendedMovies() {
   let releaseYear = ''
 
   if (data) {
-    releaseYear = data[2].release_date
+    releaseYear = data[7].release_date
 
     releaseYear = new Date(releaseYear).getFullYear().toString()
   }
@@ -26,12 +26,12 @@ export function RecommendedMovies() {
           </div>
           <div
             style={{
-              backgroundImage: `url(${process.env.NEXT_PUBLIC_TMDB_IMAGE_URL}${data[2].backdrop_path})`,
+              backgroundImage: `url(${process.env.NEXT_PUBLIC_TMDB_IMAGE_URL}${data[7].backdrop_path})`,
             }}
             className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat max-sm:flex max-sm:px-5 max-sm:py-5 sm:aspect-[1600/800]"
           >
             <div className={`${styles.gradient} h-full w-1/2 max-md:hidden`} />
-            <div className="z-40 flex w-[480px] flex-col py-6 max-sm:relative sm:absolute sm:left-10 sm:top-1/2 sm:-translate-y-1/2">
+            <div className="z-30 flex w-[480px] flex-col py-6 max-sm:relative sm:absolute sm:left-10 sm:top-1/2 sm:-translate-y-1/2">
               <span className="font-poppins text-3xl font-semibold text-white max-sm:text-xl">
                 {data[2].title}
               </span>

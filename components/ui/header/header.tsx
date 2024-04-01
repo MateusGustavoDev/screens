@@ -63,8 +63,7 @@ export function Header() {
               {session ? (
                 <LoggedInUser />
               ) : (
-                // <ActionButton onClick={() => signIn()} text="sign in" />
-                <ActionButton text="sign in" />
+                <ActionButton onClick={() => signIn()} text="sign in" />
               )}
             </div>
           </div>
