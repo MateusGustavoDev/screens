@@ -10,7 +10,7 @@ export function RecommendedMovies() {
   let releaseYear = ''
 
   if (data) {
-    releaseYear = data[7].release_date
+    releaseYear = data[0].release_date
 
     releaseYear = new Date(releaseYear).getFullYear().toString()
   }
@@ -26,18 +26,18 @@ export function RecommendedMovies() {
           </div>
           <div
             style={{
-              backgroundImage: `url(${process.env.NEXT_PUBLIC_TMDB_IMAGE_URL}${data[7].backdrop_path})`,
+              backgroundImage: `url(${process.env.NEXT_PUBLIC_TMDB_IMAGE_URL}${data[0].backdrop_path})`,
             }}
             className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat max-sm:flex max-sm:px-5 max-sm:py-5 sm:aspect-[1600/800]"
           >
             <div className={`${styles.gradient} h-full w-1/2 max-md:hidden`} />
             <div className="z-30 flex w-[480px] flex-col py-6 max-sm:relative sm:absolute sm:left-10 sm:top-1/2 sm:-translate-y-1/2">
               <span className="font-poppins text-3xl font-semibold text-white max-sm:text-xl">
-                {data[2].title}
+                {data[0].title}
               </span>
               <div className="mt-6 flex flex-col gap-3 max-sm:mt-3">
                 <div className="flex gap-2">
-                  {data[2].genre_ids.map((id) => (
+                  {data[0].genre_ids.map((id) => (
                     <span
                       className="font-poppins text-xl font-semibold text-white max-sm:text-sm"
                       key={id}
@@ -51,11 +51,11 @@ export function RecommendedMovies() {
                   </span>
                 </div>
                 <span className="line-clamp-4 w-[460px] font-poppins text-sm leading-7 text-zinc-300 max-lg:hidden">
-                  {data[2].overview}
+                  {data[0].overview}
                 </span>
               </div>
               <div className="mt-11 flex gap-5 max-sm:mt-6 max-sm:flex-col max-sm:gap-3">
-                <PlayNowButton id={data[2].id} />
+                <PlayNowButton id={data[0].id} />
                 <WatchListButton />
               </div>
             </div>
