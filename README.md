@@ -34,4 +34,5 @@ Api: https://developer.themoviedb.org/docs/getting-started
 Loading com skeleton components
 
 ![Loading da tela inicial](https://raw.githubusercontent.com/MateusGustavoDev/screens/main/public/screenshots/05.png)
+
 ![Loading da pagina de um filme](https://raw.githubusercontent.com/MateusGustavoDev/screens/main/public/screenshots/06.png)
