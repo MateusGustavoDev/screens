@@ -47,9 +47,6 @@ export function Header() {
             </Link>
           </div>
           <div className="flex w-max items-center gap-6">
-            <div className="flex h-max items-center lg:hidden">
-              <MobileMenu />
-            </div>
             <div className="flex items-center gap-12">
               <div className="max-lg:hidden">
                 <SearchInput.Root>
@@ -65,6 +62,9 @@ export function Header() {
               ) : (
                 <ActionButton onClick={() => signIn()} text="sign in" />
               )}
+            </div>
+            <div className="flex h-max items-center lg:hidden">
+              <MobileMenu />
             </div>
           </div>
         </div>

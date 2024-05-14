@@ -9,7 +9,7 @@ import { MoviePlayerSkeleton } from './components/skeletons/movie-player-skeleto
 import { ForYouMovieSkeleton } from './components/skeletons/for-you-movie-skeleton'
 import { CarouselSkeleton } from '@/components/ui/skeletons/movie-carousel-skeleton'
 import { api } from '@/lib/axios'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 interface SearchParamsProps {
   searchParams: {
@@ -17,7 +17,28 @@ interface SearchParamsProps {
   }
 }
 
+type MovieInfo = {
+  iso_639_1: string
+  iso_3166_1: string
+  name: string
+  key: string
+  site: string
+  size: number
+  type: string
+  official: boolean
+  published_at: string
+  id: string
+}
+
+async function getMovieTrailer(paramsId: number): Promise<MovieInfo[]> {
+  const response = await api(`/movie/${paramsId}/videos?language=en-US`)
+
+  const data = await response.data
+  return data.results
+}
+
 export default function Page({ searchParams }: SearchParamsProps) {
+  const [trailer, setTrailer] = useState('')
   const { data, refetch: popularMoviesRefetch } = usePopularMovies()
   const {
     data: movieInfo,
@@ -25,19 +46,20 @@ export default function Page({ searchParams }: SearchParamsProps) {
     refetch: movieInfoRefetch,
   } = useMovieInfoById(searchParams.id)
 
-  async function getMovieTrailer() {
-    const response = await api(
-      `/movie/${searchParams.id}/videos?language=en-US`,
-    )
-
-    const data = await response.data
-    return data.results
-  }
-
   const { data: movieTrailer, refetch: movieTrailerRefetch } = useQuery({
     queryKey: ['movie-trailer'],
-    queryFn: getMovieTrailer,
+    queryFn: () => getMovieTrailer(searchParams.id),
   })
+
+  useEffect(() => {
+    const filterByVideoOfTypeTrailer = movieTrailer?.find(
+      (movie) => movie.type === 'Trailer',
+    )
+
+    if (filterByVideoOfTypeTrailer) {
+      setTrailer(filterByVideoOfTypeTrailer.key)
+    }
+  }, [movieTrailer])
 
   useEffect(() => {
     popularMoviesRefetch()
@@ -71,7 +93,7 @@ export default function Page({ searchParams }: SearchParamsProps) {
                   productionCompanies={movieInfo.production_companies[0].name}
                   releaseDate={movieInfo.release_date}
                   runtime={movieInfo.runtime}
-                  youtubeKey={movieTrailer[0].key}
+                  youtubeKey={trailer}
                 />
                 <div className="max-2xl:hidden">
                   <MoviesForYou />
